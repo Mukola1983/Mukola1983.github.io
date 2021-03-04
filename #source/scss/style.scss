@@ -1,0 +1,389 @@
+@import "_nullStyle.scss";
+@import "_headerstyle.scss";
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap');
+
+body {
+	//	height: 100%;
+	background-color: #eef2f2;
+	//	background-color: grey;
+	font-family: Balsamiq+Sans;
+	color: #dc8851;
+	font-size: 25px;
+}
+
+.container {
+	border: 1px solid red;
+	max-width: 1200px;
+	margin: 0 auto;
+	@media (max-width: 700px) {
+		padding: 0 10px;
+	}
+}
+
+//MENU =========================================
+.menu {
+	padding: 20px 0;
+	&__list {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__item {
+		text-transform: uppercase;
+		font-size: 25px;
+		font-weight: bold;
+		color: #437BCE ;
+		padding: 10px;
+		transition: 1s;
+		background-color: rgba(48, 58, 73, 0);
+		&._active{
+			background-color: rgba(48, 58, 73, 0.5);
+		//	transition: 0.4s
+		}
+
+	}
+}
+
+//MENU =========================================
+
+
+//Header ======================================
+.header {
+	padding: 200px 0;
+	background: #000;
+}
+.header-top {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&__logo {
+		max-width: 200px;
+		& img{
+			width: 100%;
+			object-fit: cover;
+		}
+	}
+}
+
+.header-bottom {
+	margin: 30px 0 0 0;
+	&__menu {
+
+	}
+}
+
+
+
+//Header ======================================
+
+
+
+.content {
+	padding: 0px 0 200px;
+	margin: 200px 0 0 0;
+
+}
+
+//Slider styles=================================
+.images {
+	&__row {
+		margin:100px 0 0 0;
+		border: 1px solid #000;
+		overflow: hidden;
+		position: relative;
+		min-height: 700px;
+		@media (max-width: 900px) {
+			min-height: 400px;
+		}
+		@media (max-width: 650px) {
+			min-height: 300px;
+		}
+		@media (max-width: 450px) {
+			min-height: 200px;
+		}
+		@media (max-width: 350px) {
+			min-height: 150px;
+		}
+	}
+	&__box {
+//		border: 1px solid #000;
+		position: absolute;
+//		padding:10px ;
+		margin: 10px 0;
+		max-width: 600px;
+		max-height: 600px;
+		overflow: hidden;
+		display: none;
+		opacity: 0;
+		transition: 1s;
+		z-index: 1;
+		@media (max-width: 700px) {
+			padding: 0 10px;
+		}
+
+		& img{
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+//Box comes from left
+	&__box._readyLeft{
+		transform:translate(-200%,0);
+		display: inline-block;
+		opacity: 1;
+	}
+//Box comes from left
+
+//Box comes from right
+	&__box._readyRight{
+		display: inline-block;
+		transform:translate(300%,0);
+		opacity: 1;
+	}
+//Box comes from right
+	&__box._goRight{
+		display: inline-block;
+		left: 50%;
+		animation: right 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1 normal running 0s both;
+		opacity: 1;
+	}
+
+	&__box._goLeft{
+		display: inline-block;
+		left: 50%;
+		animation: left 1s cubic-bezier(0.6, -0.28, 0.735, 0.045) 1 normal running 0s both;
+		opacity: 1;
+	}
+
+	&__box._active{
+//		position: relative;
+		left: 50%;
+		transform:translate(-50%,0);
+		display: inline-block;
+		opacity: 1;
+		z-index: 1;
+//		transition: 1s;
+	}
+	&__box._active:hover{
+
+	}
+	& span{
+		
+
+	}
+}
+
+
+@keyframes right{
+
+	0%{
+		transform:translate(-50%, 0);
+	}
+
+	100%{
+		transform:translate(250%, 0);
+	}
+}
+@keyframes left{
+
+	0%{
+		transform:translate(-50%, 0);
+	}
+
+	100%{
+		transform:translate(-250%, 0);
+	}
+}
+
+.prev-elem,
+.next-elem{
+	position: absolute;
+	display: inline-block;
+	top: 50%;
+	font-size: 60px;
+	color: #000;
+	font-weight: bold;
+	transform:translate(0%, -50%);
+}
+.prev-elem{
+	left: 0;
+	padding: 0 0 0 10px;
+}
+.next-elem {
+	right: 0px;
+	padding: 0 10px 0 0;
+}
+
+
+//Slider styles=================================
+
+
+
+// PopUp Styles ===================
+.popup {
+	z-index: 30;
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
+	top: 0;
+	left: 0;
+	background: rgba(28, 25, 29, 0.9);
+	transform:translate(-200%, 0%);
+	transition: 0.8s;
+	overflow: auto;
+}
+.popup._active{
+	transform:translate(0%, 0%);
+}
+.img {
+	max-width: 1000px;
+	max-height: 1000px;
+	margin: 0 auto;
+	padding:140px;
+	& img{
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: 0.3s;
+	}
+/*	& img:hover{
+		width: 100%;
+		object-fit: cover;
+		transform:scale(1.1, 1.1);
+	} */
+}
+
+// PopUp Styles =====================
+
+
+
+//Content_02=================================================
+
+.content02 {
+	height: 100vh;
+	width: 100vw;
+	background: radial-gradient(circle, rgba(210,138,70,1) 1%, rgba(232,155,108,1) 50%, rgba(210,138,70,1) 100%);
+	position: relative;
+}
+
+
+.wrapper {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform:translate(-50%,-50%);
+	&__button {
+		position: relative;
+	}
+	&__button::before {
+		
+		position: absolute;
+		content: '';
+		width: 30px;
+		height: 12px;
+		top: -8px;
+		left: 50%;
+		transform:translate(-50%,0);
+		background: #2CE4CC;
+		border-radius: 10px;
+		z-index: -10;
+		box-shadow: 0 0 10px #2CE4CC,
+					0 0 20px #2CE4CC,
+					0 0 30px #2CE4CC;
+		transition: 0.4s;
+	}
+	&__button::after {
+		
+		position: absolute;
+		content: '';
+		width: 30px;
+		height: 12px;
+		bottom: -4px;
+		left: 50%;
+		transform:translate(-50%,0);
+		background: #2CE4CC;
+		border-radius: 10px;
+		z-index: -10;
+		box-shadow: 0 0 10px #2CE4CC,
+					0 0 20px #2CE4CC,
+					0 0 30px #2CE4CC;
+		transition: 0.4s;
+	}
+	&__button:hover::before{
+		width: 80%;
+		height: 60%;
+		top: 0px;
+		transition-delay: 0.4s;
+	}
+	&__button:hover::after{
+		width: 80%;
+		height: 60%;
+		bottom: 0px;
+		transition-delay: 0.4s;
+	}
+	&__link {
+	//	position: absolute;
+		position: relative;
+		display: inline-block;
+		padding: 10px 20px;
+		overflow: hidden;
+		transition:0.5s;
+		z-index: 5000;
+		backdrop-filter:blur(3px);
+		box-shadow: 0 0 10px rgba(89, 70, 65, 1);
+		border-radius: 20px;
+		background: rgba(89, 70, 65, 0.2);
+		}
+	&__link::before {
+		position: absolute;
+		content: '';
+		width: 60%;
+		height: 100%;
+		background: linear-gradient(90deg, rgba(210,138,70,0.6) 1%, rgba(138,107,88,0.2) 50%);
+		top: 0;
+		left: -20px;
+		transform: skew(30deg, 0);
+		transition:0.3s;
+	}
+	&__link:hover::before{
+		left: 120%;
+	}
+}
+
+
+//New divs====================
+.divBox{
+	display: flex;
+	flex-wrap:wrap;
+	max-width: 1100px;
+	margin: 0 auto;
+
+}
+.newDiv{
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100px;
+	height: 100px;
+	background:rgba(30, 193, 172, 0.7);
+	box-shadow: 0 0 25px rgba(0,0,0, 0.5);
+	z-index: 1;
+		
+	margin: 10px;
+	transform:scale(0,0);
+}
+._activeDiv{
+	position: absolute;
+	transition:0.9s;
+	width: 100px;
+	height: 100px;
+	z-index: 1;
+}
+//Content_02=================================================
+
